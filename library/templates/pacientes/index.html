@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block titulo %} Info de pacientes {% endblock %}
+
+{% block contenido %} 
+
+<div class="card">
+    <div class="card-header">
+        <a name="" id="" class="btn btn-success" href="{% url 'crear' %}" role="button">Crear nuevo paciente</a>
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Documento</th>
+                    <th>Nombre</th>
+                    <th>Edad</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for paciente in pacientes %}
+                <tr>
+                    <td>{{paciente.id}}</td>
+                    <td>{{paciente.documento}}</td>
+                    <td>{{paciente.nombre}}</td>
+                    <td>{{paciente.edad}}</td>
+                    <td><a name="" id="" class="btn btn-info" href="{% url 'editar' paciente.id %}" role="button">Editar</a>  
+                    <a name="" id="" class="btn btn-danger" href="{% url 'borrar' paciente.id %}" role="button">Borrar</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer text-muted">
+        Hospital San Cruz
+    </div>
+</div>
+
+{% endblock %}
